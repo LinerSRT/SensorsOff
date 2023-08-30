@@ -5,13 +5,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.hardware.ISensorPrivacyManager;
 import android.os.IBinder;
 import android.os.RemoteException;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
 
 import rikka.shizuku.Shizuku;
-import ru.liner.sensorprivacy.SystemServerApi;
+import rikka.shizuku.ShizukuBinderWrapper;
+import rikka.shizuku.SystemServiceHelper;
+import ru.liner.sensorprivacy.Singleton;
 import ru.liner.sensorprivacy.preference.Preferences;
 
 /**
@@ -19,21 +22,26 @@ import ru.liner.sensorprivacy.preference.Preferences;
  * E-mail: serinity320@mail.com
  * Github: https://github.com/LinerSRT
  * Date: 30.08.2023, 14:15
+ * @noinspection JavadocLinkAsPlainText
  */
 public class SensorsOffTileService extends TileService {
-    private static final String TAG = "TAGTAG";
-    private Context context;
     private KeyguardManager keyguardManager;
 
     private Preferences preferences;
-    private boolean shizukuReady;
     private boolean privacyEnabled;
+
+    private static final Singleton<ISensorPrivacyManager> sensorPrivacyManager = new Singleton<ISensorPrivacyManager>() {
+        @Override
+        protected ISensorPrivacyManager create() {
+            return ISensorPrivacyManager.Stub.asInterface(new ShizukuBinderWrapper(SystemServiceHelper.getSystemService("sensor_privacy")));
+        }
+    };
 
 
     @Override
     public void onCreate() {
         super.onCreate();
-        context = getApplicationContext();
+        Context context = getApplicationContext();
         keyguardManager = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
         preferences = new Preferences(context);
     }
@@ -50,7 +58,7 @@ public class SensorsOffTileService extends TileService {
     }
 
     private void refresh(){
-        shizukuReady = Shizuku.pingBinder() && Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED;
+        boolean shizukuReady = Shizuku.pingBinder() && Shizuku.checkSelfPermission() == PackageManager.PERMISSION_GRANTED;
         Tile tile = getQsTile();
         if (tile == null)
             return;
@@ -60,15 +68,16 @@ public class SensorsOffTileService extends TileService {
 
 
     public void setPrivacyEnabled(boolean privacyEnabled) {
+        if(keyguardManager.isKeyguardLocked())
+            return;
+        this.privacyEnabled = privacyEnabled;
         try {
-            this.privacyEnabled = privacyEnabled;
-            preferences.put("privacy_enabled", privacyEnabled);
-            SystemServerApi.getSensorPrivacyManager().setSensorPrivacy(privacyEnabled);
+            sensorPrivacyManager.get().setSensorPrivacy(privacyEnabled);
         } catch (RemoteException e) {
             e.printStackTrace();
             this.privacyEnabled = false;
-            preferences.put("privacy_enabled", privacyEnabled);
         }
+        preferences.put("privacy_enabled", privacyEnabled);
         refresh();
     }
 

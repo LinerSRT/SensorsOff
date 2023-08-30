@@ -11,6 +11,7 @@ import java.util.List;
  * E-mail: serinity320@mail.com
  * Github: https://github.com/LinerSRT
  * Date: 29.08.2023, 14:41
+ * @noinspection JavadocLinkAsPlainText
  */
 public class Token<T> implements ParameterizedType {
     private final Class<?> clazz;

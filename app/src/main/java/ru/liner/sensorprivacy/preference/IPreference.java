@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
  * E-mail: serinity320@mail.com
  * Github: https://github.com/LinerSRT
  * Date: 29.08.2023, 14:18
+ * @noinspection JavadocLinkAsPlainText
  */
 public interface IPreference {
     <Value> void put(@NonNull String key, @NonNull Value value);

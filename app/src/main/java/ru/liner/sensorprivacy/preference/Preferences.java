@@ -18,6 +18,7 @@ import java.util.Objects;
  * E-mail: serinity320@mail.com
  * Github: https://github.com/LinerSRT
  * Date: 29.08.2023, 14:23
+ * @noinspection JavadocLinkAsPlainText
  */
 public class Preferences implements IPreference {
     private final SharedPreferences preferences;
