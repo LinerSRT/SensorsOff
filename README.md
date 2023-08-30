@@ -1,4 +1,5 @@
-<img src="https://github.com/LinerSRT/SensorsOff/raw/master/images/preview.png">
+<img src="https://github.com/LinerSRT/SensorsOff/blob/master/images/preview.jpg" height="250">
+
 # SensorsOff Tile
 [![API](https://img.shields.io/badge/API-31%2B-green.svg?style=flat)](https://android-arsenal.com/api?level=31) [![Shizuku](https://img.shields.io/badge/Shizuku%20App-blue.svg?style=flat)](https://android-arsenal.com/api?level=31) [![Rootless](https://img.shields.io/badge/Rootless-red.svg?style=flat)](https://android-arsenal.com/api?level=31)
 
