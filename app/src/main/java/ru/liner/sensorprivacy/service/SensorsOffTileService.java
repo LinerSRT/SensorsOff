@@ -80,7 +80,7 @@ public class SensorsOffTileService extends TileService {
                 try {
                     privacyEnabled = !privacyEnabled;
                     sensorPrivacyManager.get().setSensorPrivacy(privacyEnabled);
-                } catch (RemoteException ignored) {
+                } catch (RemoteException | SecurityException ignored) {
                     privacyEnabled = false;
                     shizukuState = obtainShizukuState();
                 }
