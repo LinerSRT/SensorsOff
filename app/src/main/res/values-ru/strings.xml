@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="tile_sensors_disabled">Сенсоры выключены</string>
+    <string name="tile_sensors_enabled">Сенсоры включены</string>
+    <string name="tile_shizuku_unavailable">Shizuku не доступен</string>
+    <string name="tile_enable_in_shizuku_warn">Активируйте в Shizuku</string>
+    <string name="tile_shizuku_not_configured_warn">Shizuku не настроен</string>
+    <string name="tile_shizuku_not_found_warn">Shizuku не найден</string>
+</resources>
