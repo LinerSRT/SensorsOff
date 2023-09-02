@@ -18,9 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SensorPrivacy">
 
-        <meta-data
-            android:name="android.service.quicksettings.ACTIVE_TILE"
-            android:value="true" />
+
         <service
             android:name=".service.SensorsOffTileService"
             android:exported="true"

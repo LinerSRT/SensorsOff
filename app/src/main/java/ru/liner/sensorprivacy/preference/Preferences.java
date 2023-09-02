@@ -5,41 +5,29 @@ import android.content.SharedPreferences;
 import android.util.Base64;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Author: Line'R
  * E-mail: serinity320@mail.com
  * Github: https://github.com/LinerSRT
  * Date: 29.08.2023, 14:23
+ *
  * @noinspection JavadocLinkAsPlainText
  */
 public class Preferences implements IPreference {
     private final SharedPreferences preferences;
-    @Nullable
-    private static Preferences instance;
 
     public Preferences(@NonNull Context context, @NonNull String preferenceName) {
         this.preferences = context.getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
     }
 
-    public Preferences(@NonNull Context context){
+    public Preferences(@NonNull Context context) {
         this(context, context.getPackageName());
-    }
-
-    public static void create(@NonNull Context context){
-        if (instance == null)
-            instance = new Preferences(context);
-    }
-    @NonNull
-    public static Preferences get(){
-        return Objects.requireNonNull(instance);
     }
 
     @Override

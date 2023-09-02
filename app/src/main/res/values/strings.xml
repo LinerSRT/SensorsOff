@@ -1,10 +1,9 @@
 <resources>
-    <string name="app_name" translatable="false">SensorPrivacy</string>
+    <string name="app_name" translatable="false">SensorsOff</string>
     <string name="sensorsoff_tile_name" translatable="false">SensorsOff</string>
     <string name="tile_sensors_disabled">Sensors disabled</string>
     <string name="tile_sensors_enabled">Sensors enabled</string>
-    <string name="tile_shizuku_unavailable">Shizuku unavailable</string>
-    <string name="tile_enable_in_shizuku_warn">Enable in Shizuku</string>
-    <string name="tile_shizuku_not_configured_warn">Shizuku not configured</string>
-    <string name="tile_shizuku_not_found_warn">Shizuku not found</string>
+    <string name="tile_permission_required">Permission required</string>
+    <string name="tile_shizuku_not_working">Shizuku not working</string>
+    <string name="tile_shizuku_error">Shizuku error</string>
 </resources>
