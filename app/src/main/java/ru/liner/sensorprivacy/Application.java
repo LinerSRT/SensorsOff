@@ -1,8 +1,12 @@
 package ru.liner.sensorprivacy;
 
+import android.accessibilityservice.AccessibilityServiceInfo;
 import android.content.Context;
+import android.view.accessibility.AccessibilityManager;
 
 import org.lsposed.hiddenapibypass.HiddenApiBypass;
+
+import java.util.List;
 
 
 /**
@@ -24,5 +28,14 @@ public class Application extends android.app.Application {
     protected void attachBaseContext(Context base) {
         super.attachBaseContext(base);
         HiddenApiBypass.addHiddenApiExemptions("L");
+    }
+
+    public static boolean isAccessibilityServiceEnabled(Context context) {
+        AccessibilityManager accessibilityManager = (AccessibilityManager) context.getSystemService(Context.ACCESSIBILITY_SERVICE);
+        List<AccessibilityServiceInfo> accessibilityServices = accessibilityManager.getEnabledAccessibilityServiceList(AccessibilityServiceInfo.FEEDBACK_ALL_MASK);
+        for (AccessibilityServiceInfo info : accessibilityServices)
+            if (info.getId().contains(context.getPackageName()))
+                return true;
+        return false;
     }
 }

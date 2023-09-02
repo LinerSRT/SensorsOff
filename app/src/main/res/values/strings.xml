@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name" translatable="false">SensorsOff</string>
+
     <string name="sensorsoff_tile_name" translatable="false">SensorsOff</string>
     <string name="tile_sensors_disabled">Sensors disabled</string>
     <string name="tile_sensors_enabled">Sensors enabled</string>
     <string name="tile_permission_required">Permission required</string>
     <string name="tile_shizuku_not_working">Shizuku not working</string>
     <string name="tile_shizuku_error">Shizuku error</string>
+    <string name="accessibility_service_name">Window service</string>
+    <string name="accessibility_service_description">This service helps determinate which application now on screen. We need this for determination of disable sensors or not for specified application. We don\'t collect/store/share any information</string>
+
 </resources>

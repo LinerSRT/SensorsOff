@@ -21,14 +21,29 @@ import java.util.List;
  */
 public class Preferences implements IPreference {
     private final SharedPreferences preferences;
+    private final List<PreferenceListener<Object>> listenerList = new ArrayList<>();
 
     public Preferences(@NonNull Context context, @NonNull String preferenceName) {
         this.preferences = context.getSharedPreferences(preferenceName, Context.MODE_PRIVATE);
+        this.preferences.registerOnSharedPreferenceChangeListener((sharedPreferences, s) -> {
+            if (s == null)
+                return;
+            for(PreferenceListener<Object> listener : listenerList)
+                if(listener.key().equals(s)){
+                    if (listener.defaultValueClass() != null) {
+                        listener.onChanged(get(s, listener.defaultValueClass()));
+                    } else {
+                        listener.onChanged(get(s, listener.defaultValue()));
+                    }
+                }
+
+        });
     }
 
     public Preferences(@NonNull Context context) {
         this(context, context.getPackageName());
     }
+
 
     @Override
     public <Value> void put(@NonNull String key, @NonNull Value value) {
@@ -97,5 +112,18 @@ public class Preferences implements IPreference {
     @Override
     public boolean has(@NonNull String key) {
         return preferences.contains(key);
+    }
+
+
+    /** @noinspection unchecked*/
+    @Override
+    public <Value> void register(@NonNull PreferenceListener<Value> listener) {
+        listenerList.add((PreferenceListener<Object>) listener);
+    }
+
+    /** @noinspection unchecked*/
+    @Override
+    public <Value> void unregister(@NonNull PreferenceListener<Value> listener) {
+        listenerList.add((PreferenceListener<Object>) listener);
     }
 }

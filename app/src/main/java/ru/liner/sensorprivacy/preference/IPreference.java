@@ -16,4 +16,6 @@ public interface IPreference {
     void clear(@NonNull String key);
     void clear();
     boolean has(@NonNull String key);
+    <Value> void register(@NonNull PreferenceListener<Value> listener);
+    <Value> void unregister(@NonNull PreferenceListener<Value> listener);
 }
