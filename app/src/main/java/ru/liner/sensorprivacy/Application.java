@@ -4,8 +4,6 @@ import android.content.Context;
 
 import org.lsposed.hiddenapibypass.HiddenApiBypass;
 
-import ru.liner.sensorprivacy.preference.Preferences;
-
 
 /**
  * Author: Line'R
@@ -20,7 +18,6 @@ public class Application extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        Preferences.create(this);
     }
 
     @Override
