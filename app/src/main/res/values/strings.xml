@@ -6,4 +6,10 @@
     <string name="tile_permission_required">Permission required</string>
     <string name="tile_shizuku_not_working">Shizuku not working</string>
     <string name="tile_shizuku_error">Shizuku error</string>
+    <string name="accessibility_service_name">Window service</string>
+    <string name="accessibility_service_description">This service helps determinate which application now on screen. We need this for determination of disable sensors or not for specified application. We don\'t collect/store/share any information</string>
+    <string name="enable_service">Enable service</string>
+    <string name="select_apps_that_will_be_blocked_for_using_device_sensors">Select apps that will be blocked for using device sensors.</string>
+    <string name="this_function_requires_access_to_accessibility_service_for_detecting_which_application_is_currently_using">This function requires access to accessibility service, for detecting which application is currently using</string>
+
 </resources>

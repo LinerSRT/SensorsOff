@@ -2,6 +2,8 @@ package ru.liner.sensorprivacy.preference;
 
 import androidx.annotation.NonNull;
 
+import java.util.List;
+
 /**
  * Author: Line'R
  * E-mail: serinity320@mail.com
@@ -13,6 +15,7 @@ public interface IPreference {
     <Value> void put(@NonNull String key, @NonNull Value value);
     <Value> Value get(@NonNull String key, @NonNull Value defaultValue);
     <Value> Value get(@NonNull String key, @NonNull Class<Value> valueClass);
+    <Value> List<Value> getList(@NonNull String key, @NonNull Class<Value> valueClass);
     void clear(@NonNull String key);
     void clear();
     boolean has(@NonNull String key);

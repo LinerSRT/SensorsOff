@@ -1,8 +1,0 @@
-<resources>
-    <!-- Base application theme. -->
-    <style name="Base.Theme.SensorPrivacy" parent="Theme.Material3.DayNight.NoActionBar">
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar">false</item>
-    </style>
-</resources>

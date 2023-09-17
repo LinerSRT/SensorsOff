@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:liftOnScroll="true"
+        app:liftOnScrollColor="@color/black">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@+id/toolbar_layout"
+            style="?collapsingToolbarLayoutLargeStyle"
+            android:layout_width="match_parent"
+            android:layout_height="?collapsingToolbarLayoutLargeSize"
+            android:fitsSystemWindows="false"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+
+            <View
+                android:id="@+id/click_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:elevation="0dp"
+                app:layout_collapseMode="pin"
+                app:title="@string/app_name"
+                app:titleMarginStart="@dimen/m3_alert_dialog_icon_margin"
+                tools:ignore="PrivateResource" />
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                style="?materialCardViewFilledStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="32dp"
+                app:cardElevation="4dp"
+                app:contentPadding="16dp">
+
+                <com.google.android.material.materialswitch.MaterialSwitch
+                    android:id="@+id/enableWindowService"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/enable_service"
+                    android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/select_apps_that_will_be_blocked_for_using_device_sensors"
+                android:textAppearance="@style/TextAppearance.Material3.LabelLarge" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/this_function_requires_access_to_accessibility_service_for_detecting_which_application_is_currently_using"
+                android:textAppearance="@style/TextAppearance.Material3.BodySmall" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_blocking_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:nestedScrollingEnabled="true"
+                android:overScrollMode="never" />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

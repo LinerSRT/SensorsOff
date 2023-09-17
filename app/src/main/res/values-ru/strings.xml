@@ -5,4 +5,9 @@
     <string name="tile_permission_required">Нет разрешения</string>
     <string name="tile_shizuku_not_working">Shisuku не запущен</string>
     <string name="tile_shizuku_error">Ошибка Sgizuku</string>
+    <string name="accessibility_service_name">Сервис приложений</string>
+    <string name="accessibility_service_description">Сервис позволяет определить какое приложение сейчас используется, это необходимо для блокировки сенсоров для выбранных приложений. Мы не собираем\\передает\\храним никакой информации</string>
+    <string name="enable_service">Включить сервис</string>
+    <string name="select_apps_that_will_be_blocked_for_using_device_sensors">Выберите приложения которым будет запрещен доступ к датчикам</string>
+    <string name="this_function_requires_access_to_accessibility_service_for_detecting_which_application_is_currently_using">Эта функция требует активации сервиса в спец. возможностях, что бы определить какое приложение сейчас запущено</string>
 </resources>

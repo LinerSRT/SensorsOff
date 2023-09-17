@@ -83,11 +83,15 @@ public class Preferences implements IPreference {
             return (Value) Long.valueOf(preferences.getLong(key, (Long) defaultValue));
         } else if (defaultValue instanceof byte[]) {
             return (Value) Base64.decode(preferences.getString(key, ""), Base64.DEFAULT);
-        } else if (defaultValue instanceof List) {
-            List<Value> valueList = new Gson().fromJson(preferences.getString(key, ""), new Token<>(defaultValue.getClass()));
-            return valueList == null ? (Value) new ArrayList<>() : (Value) valueList;
         }
         return defaultValue;
+    }
+
+
+    @Override
+    public <Value> List<Value> getList(@NonNull String key, @NonNull Class<Value> valueClass) {
+        List<Value> valueList = new Gson().fromJson(preferences.getString(key, ""), new Token<>(valueClass));
+        return valueList == null ? new ArrayList<>() : valueList;
     }
 
     @Override
